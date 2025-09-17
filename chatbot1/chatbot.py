@@ -17,7 +17,6 @@ while True:
     if user_input.lower() == 'exit':
         print(chat_history, 'chat history')
         break
-    # prompt = template.from_messages(chat_history=chat_history,input=HumanMessage(user_input))
     chat_history.append(HumanMessage(content=user_input))
     prompt = template.format_messages(chat_history=chat_history)
     res = model.invoke(prompt)
