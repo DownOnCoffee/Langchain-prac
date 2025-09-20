@@ -1,0 +1,20 @@
+Prompts -
+MessagesPlaceholder - helps to store chat history / previous messages.
+ChatPromptTemplate - It is a template that is used to define our prompt
+Once we get user input or output from agent we append that to chat history list to give it in our prompt .
+
+Structured Output -
+1. Typed Dict
+Annotated: To give meaning to the keys of the structured output in typed dict.(Just for Representation)
+
+To add validation to data-> 
+2. Pydantic
+It lets you add validation to output response.
+
+3 Json schema
+used when the project requires interaction with frontend.
+
+LLm's that dont support structured response need Output Parsers like Ollama
+
+
+
