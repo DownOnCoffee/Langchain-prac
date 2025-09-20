@@ -26,6 +26,7 @@ chat_history = []
 template = ChatPromptTemplate.from_messages([
     ('system','You are a helpful AI tutor that helps in teaching.'),
     MessagesPlaceholder(variable_name="chat_history"),
+    ('system', '{formatting_instructions}')
 ])
 
 while True:
@@ -34,10 +35,10 @@ while True:
         print(chat_history, 'chat history')
         break
     instructions = parser.get_format_instructions()
-    chat_history.append(HumanMessage(content=f'{user_input} \n {instructions}'))
-    prompt = template.format_messages(chat_history=chat_history)
-    res = model.invoke(prompt)
-    chat_history.append(AIMessage(content=res))
+    chat_history.append(HumanMessage(content=f'{user_input}'))
+    chain = template | model | parser
+    res = chain.invoke({"chat_history" : chat_history, 'formatting_instructions':instructions}) # output comes in the form of pydantic object
+    chat_history.append(AIMessage(content=res.summary))
     print(f'AI: {res}')
 
 

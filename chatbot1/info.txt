@@ -1,3 +1,0 @@
-MessagesPlaceholder - helps to store chat history / previous messages.
-ChatPromptTemplate - It is a template that is used to define our prompt
-Once we get user input or output from agent we append that to chat history list to give it in our prompt .
